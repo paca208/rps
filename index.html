@@ -4,25 +4,341 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="./styles.css" rel="stylesheet">
+    <link href="images/logo.ico" rel="icon">
+    <title>LoL Random 1v1</title>
 </head>
 <body>
+    <div class="ruleset">
+        <div id="typewriter">Welcome to a League of Legends 1v1 Blind Challenge</div>
+        <div class="rules fade-in">Here are the rules:</div>
+        <div class="rules fade-in-late">
+            Each round you may select one champion:</div>
+    </div>
+    <div class="champ-container">
+        <div class="fade-up malphite">
+            <img class="classicmalphite" src="./images/Classic_Malphite.webp">
+        </div>
+        <div class="fade-up quinn">
+            <img class="classicquinn" src="./images/Classic_Quinn.webp">
+        </div>
+        <div class="fade-up darius">
+            <img class="classicdarius" src="./images/Classic_Darius.webp">
+        </div>
+    </div>
+<button class="confirmbtn appear">Got it!</button>
+ <!--   <div id="btns">
+    <button class="PlayerRock">Rock</button>
+    <button class="PlayerPaper">Paper</button>
+    <button class="PlayerScissors">Scissors</button>
+    </div>
+    <div class="container">Results
+        <div class="scoring"></div>
+        <div class="champion"></div>
+    </div>
+-->
     <script>
+        const body = document.body
+        const ruleset = document.querySelector('.ruleset')
+        const ruletext = document.querySelector('.rules.fade-in-late')
+        const confirmbtn = document.querySelector('.confirmbtn')
+        const container = document.querySelector('.container');
+        const champcontainer = document.querySelector('.champ-container')
+
+        confirmbtn.addEventListener('click', () => {
+            ruleset.removeChild(ruletext);
+            const ruletextPC = document.createElement('div');
+            ruletextPC.classList.add('fade');
+            ruletextPC.textContent = "Then, your computer opponent will make their selection out of the three: ";
+            ruleset.appendChild(ruletextPC);
+            body.removeChild(confirmbtn);
+            const confirmbtn2 = document.createElement('button');
+            confirmbtn2.classList.add("confirmbtn");
+            confirmbtn2.textContent = "Okay";
+            body.appendChild(confirmbtn2);
+            
+            confirmbtn2.addEventListener('click', () => {
+            body.removeChild(confirmbtn2)
+            const PlayBtn = document.createElement('button');
+            PlayBtn.classList.add('playbtn');
+            PlayBtn.textContent = 'Play Game';
+            PlayBtn.classList.add('fade')
+            PlayBtn.style.animationDelay = "2s"
+            body.appendChild(PlayBtn)
+            champcontainer.classList.add("fadeout");
+            champcontainer.onanimationend = () => { 
+            if (champcontainer.classList.contains("fadeout")){
+                body.removeChild(champcontainer);
+                ruleset.removeChild(ruletextPC);
+            }
+        };
+        champcontainer.onanimationend = () => {
+            body.removeChild(champcontainer);
+            ruleset.removeChild(ruletextPC);
+            const ruletextRel = document.createElement('div');
+            ruletextRel.classList.add('fade');
+            ruletextRel.textContent = "Choose carefully, as each champ has a counter"
+            ruletextRel.style.marginBottom = "2%"
+            ruleset.appendChild(ruletextRel)
+            const champrels = document.createElement('div')
+            champrels.classList.add('champrels')
+
+            /*malphite relation*/
+            const malrel = document.createElement('div')
+            champrels.appendChild(malrel)
+            malrel.classList.add("individualrel")
+            
+            const malimgdiv = document.createElement('div')
+            const malimg = document.createElement('img')
+            malimg.src = "./images/MalphiteMini.png"
+            malimgdiv.appendChild(malimg)
+            malrel.appendChild(malimgdiv)
+            
+            const malreltext = document.createElement('div')
+            malreltext.textContent = "BEATS"
+            malreltext.classList.add('beatText')
+            malrel.appendChild(malreltext)
+            
+            const malbeatsdiv = document.createElement('div')
+            const malbeatsimg = document.createElement('img')
+            malbeatsimg.src = "./images/QuinnMini.png"
+            malbeatsdiv.appendChild(malbeatsimg)
+            malrel.appendChild(malbeatsdiv)
+
+            ruleset.appendChild(champrels)
+            malrel.classList.add("faderight")
+            champrels.appendChild(malrel)
+
+            /*quinn relation*/
+            const quinnrel = document.createElement('div')
+            champrels.appendChild(quinnrel)
+            quinnrel.classList.add("individualrel")
+            
+            const quinnimgdiv = document.createElement('div')
+            const quinnimg = document.createElement('img')
+            quinnimg.src = "./images/QuinnMini.png"
+            quinnimgdiv.appendChild(quinnimg)
+            quinnrel.appendChild(quinnimgdiv)
+            
+            const quinnreltext = document.createElement('div')
+            quinnreltext.textContent = "BEATS"
+            quinnreltext.classList.add('beatText')
+            quinnrel.appendChild(quinnreltext)
+            
+            const quinnbeatsdiv = document.createElement('div')
+            const quinnbeatsimg = document.createElement('img')
+            quinnbeatsimg.src = "./images/DariusMini.png"
+            quinnbeatsdiv.appendChild(quinnbeatsimg)
+            quinnrel.appendChild(quinnbeatsdiv)
+
+            ruleset.appendChild(champrels)
+            quinnrel.style.animationDelay = "350ms"
+            quinnrel.classList.add("faderight")
+            champrels.appendChild(quinnrel)
+
+            /*darius relation */
+
+            const dariusrel = document.createElement('div')
+            champrels.appendChild(dariusrel)
+            dariusrel.classList.add("individualrel")
+            
+            const dariusimgdiv = document.createElement('div')
+            const dariusimg = document.createElement('img')
+            dariusimg.src = "./images/DariusMini.png"
+            dariusimgdiv.appendChild(dariusimg)
+            dariusrel.appendChild(dariusimgdiv)
+            
+            const dariusreltext = document.createElement('div')
+            dariusreltext.textContent = "BEATS"
+            dariusreltext.classList.add('beatText')
+            dariusrel.appendChild(dariusreltext)
+            
+            const dariusbeatsdiv = document.createElement('div')
+            const dariusbeatsimg = document.createElement('img')
+            dariusbeatsimg.src = "./images/MalphiteMini.png"
+            dariusbeatsdiv.appendChild(dariusbeatsimg)
+            dariusrel.appendChild(dariusbeatsdiv)
+
+            ruleset.appendChild(champrels)
+            dariusrel.style.animationDelay = "700ms"
+            dariusrel.classList.add("faderight")
+            champrels.appendChild(dariusrel)
+
+            PlayBtn.addEventListener('click', () =>{
+                body.removeChild(ruleset)
+                const header = document.createElement('div')
+                header.classList.add('ruleset')
+                header.classList.add('fade')
+                header.style.marginTop = '0%'
+                header.style.padding = "1%"
+                header.style.fontWeight = "700"
+                header.textContent = 'A best of 9 series has begun!'
+                body.appendChild(header)
+                const BtnsDiv = document.createElement('div')
+                BtnsDiv.setAttribute('id','btns')
+                body.appendChild(BtnsDiv)
+                const PlayerRockBtnjs = document.createElement('input')
+                PlayerRockBtnjs.setAttribute('type', 'image')
+                PlayerRockBtnjs.setAttribute('name', 'Malphite')
+                PlayerRockBtnjs.setAttribute('src', './images/MalphiteMini.png?')
+                PlayerRockBtnjs.setAttribute('alt', 'Malphite')
+                PlayerRockBtnjs.classList.add('PlayerRock')
+                BtnsDiv.appendChild(PlayerRockBtnjs)
+                const PlayerPaperBtnjs = document.createElement('input')
+                PlayerPaperBtnjs.setAttribute('type', 'image')
+                PlayerPaperBtnjs.setAttribute('name', 'Darius')
+                PlayerPaperBtnjs.setAttribute('src', './images/DariusMini.png?')
+                PlayerPaperBtnjs.setAttribute('alt', 'Darius')
+                PlayerPaperBtnjs.classList.add('PlayerPaper')
+                BtnsDiv.appendChild(PlayerPaperBtnjs)
+                const PlayerScissorsBtnjs = document.createElement('input')
+                PlayerScissorsBtnjs.setAttribute('type', 'image')
+                PlayerScissorsBtnjs.setAttribute('name', 'Quinn')
+                PlayerScissorsBtnjs.setAttribute('src', './images/QuinnMini.png?')
+                PlayerScissorsBtnjs.setAttribute('alt', 'Quinn')
+                PlayerScissorsBtnjs.classList.add('PlayerScissors')
+                BtnsDiv.appendChild(PlayerScissorsBtnjs)
+                const champselbg = document.createElement('img')
+                champselbg.src = "./images/ChampSelResized.jpg"
+                BtnsDiv.appendChild(champselbg)
+                PlayerRockBtnjs.classList.add('malphitepos')
+                PlayerPaperBtnjs.classList.add('quinnpos')
+                PlayerScissorsBtnjs.classList.add('dariuspos')
+                body.style.alignItems = "center"
+                BtnsDiv.style.marginLeft = "-240px"
+                BtnsDiv.classList.add('fade')
+                body.removeChild(PlayBtn)
+                const resultContainer = document.createElement('div')
+                resultContainer.classList.add('container')
+                resultContainer.classList.add('rules')
+                resultContainer.classList.add('fade-in')
+                const scoringJs = document.createElement('button')
+                scoringJs.classList.add('scoring')
+                const championJs = document.createElement('div')
+                championJs.classList.add('champion')
+                championJs.classList.add('rules')
+                scoringJs.classList.add('fade')
+                championJs.classList.add('fade')
+                championJs.classList.add('ruleset')
+                scoringJs.classList.add('ruleset')
+                scoringJs.style.marginTop = '0'
+                scoringJs.style.padding = '1%'
+                BtnsDiv.appendChild(scoringJs)
+                scoringJs.classList.add('centerresult')
+                scoringJs.classList.add('confirmbtn')
+                scoringJs.style.pointerEvents = "none"
+                scoringJs.textContent = "^Choose your champion^"
+                resultContainer.appendChild(championJs)
+                const malphiteCircle = document.createElement('img')
+                malphiteCircle.src = "./images/MalphiteCircle.png"
+                malphiteCircle.classList.add('malphiteSelected')
+                malphiteCircle.classList.add('fadeout')
+                BtnsDiv.appendChild(malphiteCircle)
+                const quinnCircle = document.createElement('img')
+                quinnCircle.src = "./images/QuinnCircle.png"
+                quinnCircle.classList.add('quinnSelected')
+                quinnCircle.classList.add('fadeout')
+                BtnsDiv.appendChild(quinnCircle)
+                const dariusCircle = document.createElement('img')
+                dariusCircle.src = "./images/dariusCircle.png"
+                dariusCircle.classList.add('dariusSelected')
+                dariusCircle.classList.add('fadeout')
+                BtnsDiv.appendChild(dariusCircle)
+                const malphiteCircle2 = document.createElement('img')
+                malphiteCircle2.src = "./images/MalphiteCircle.png"
+                malphiteCircle2.classList.add('malphiteSelectedOpp')
+                malphiteCircle2.classList.add('fadeout')
+                BtnsDiv.appendChild(malphiteCircle2)
+                const quinnCircle2 = document.createElement('img')
+                quinnCircle2.src = "./images/QuinnCircle.png"
+                quinnCircle2.classList.add('quinnSelectedOpp')
+                quinnCircle2.classList.add('fadeout')
+                BtnsDiv.appendChild(quinnCircle2)
+                const dariusCircle2 = document.createElement('img')
+                dariusCircle2.src = "./images/dariusCircle.png"
+                dariusCircle2.classList.add('dariusSelectedOpp')
+                dariusCircle2.classList.add('fadeout')
+                BtnsDiv.appendChild(dariusCircle2)
+                
+                const victoryvid = document.createElement('video')
+                victoryvid.setAttribute('width','1280')
+                victoryvid.setAttribute('height','520')
+                victoryvid.autoplay = true
+                victoryvid.muted = true
+                victoryvid.src = "./video/victory.mp4"
+
+                const defeatvid = document.createElement('video')
+                defeatvid.setAttribute('width','1280')
+                defeatvid.setAttribute('height','520')
+                defeatvid.setAttribute('class', 'videodefeat')
+                defeatvid.autoplay = true
+                defeatvid.muted = true
+                defeatvid.src = "./video/defeat.mp4"
+                
+
+
+                
+
+                
+
         let items = ["rock","paper","scissors"];
         function computerPlay(){
             randomAnswer = items[Math.floor(Math.random() * items.length)];
-            return randomAnswer
+            return randomAnswer;
         }
-       function playerPlay(){
-          let Answer = prompt("Rock, paper, scissors?");
-          correctedAnswer = Answer.toLowerCase();
-          return correctedAnswer
-       }
        function playRound(playerSelection, computerSelection){
-           playerSelection = playerPlay();
            computerSelection = computerPlay();
+           /* test 123 123 213  */
+           if (playerSelection == "rock"){
+               malphiteCircle.classList.add('fade')
+               malphiteCircle.classList.remove('fadeout')
+               quinnCircle.classList.add('fadeout')
+               quinnCircle.classList.remove('fade')
+               dariusCircle.classList.add('fadeout')
+               dariusCircle.classList.add('fade')
+           }
+           if (playerSelection == "paper"){
+               dariusCircle.classList.add('fade')
+               dariusCircle.classList.remove('fadeout')
+               malphiteCircle.classList.add('fadeout')
+               malphiteCircle.classList.remove('fade')
+               quinnCircle.classList.add('fadeout')
+               quinnCircle.classList.remove('fade')
+           }
+           if (playerSelection == "scissors"){
+               quinnCircle.classList.add('fade')
+               quinnCircle.classList.remove('fadeout')
+               malphiteCircle.classList.add('fadeout')
+               malphiteCircle.classList.remove('fade')
+               dariusCircle.classList.add('fadeout')
+               dariusCircle.classList.remove('fade')
+           }
+           if (computerSelection == "rock"){
+               malphiteCircle2.classList.add('fade')
+               malphiteCircle2.classList.remove('fadeout')
+               quinnCircle2.classList.add('fadeout')
+               quinnCircle2.classList.remove('fade')
+               dariusCircle2.classList.add('fadeout')
+               dariusCircle2.classList.add('fade')
+           }
+           if (computerSelection == "paper"){
+               dariusCircle2.classList.add('fade')
+               dariusCircle2.classList.remove('fadeout')
+               malphiteCircle2.classList.add('fadeout')
+               malphiteCircle2.classList.remove('fade')
+               quinnCircle2.classList.add('fadeout')
+               quinnCircle2.classList.remove('fade')
+           }
+           if (computerSelection == "scissors"){
+               quinnCircle2.classList.add('fade')
+               quinnCircle2.classList.remove('fadeout')
+               malphiteCircle2.classList.add('fadeout')
+               malphiteCircle2.classList.remove('fade')
+               dariusCircle2.classList.add('fadeout')
+               dariusCircle2.classList.remove('fade')
+           }
            if (playerSelection == computerSelection){
-           return "draw"
+           return "draw";
            }
            else if (playerSelection == "rock" && computerSelection == "paper"){
            return "paper beats rock, you lose!"}
@@ -35,37 +351,94 @@
            else if (playerSelection == "scissors" && computerSelection == "paper"){
            return "scissors beats paper, you win!"}
            else if (playerSelection == "scissors" && computerSelection == "rock"){
-           return "scissors beats rock, you win!"}
+           return "rock beats scissors, you lose!"}
        }
+       let player = 0;
+       let computer = 0;
+       let score = `${player}:${computer}`;
+       function game(choice){
+        result = playRound(choice);
 
-       function game(){
-        let player = 0;
-        let computer = 0;
-        let score = `${player}:${computer}`;
-           for (let i = 0; i < 5; i++) {
-            result = playRound()
-            if (result.includes("win")){
+        if (result.includes("win")){
                 ++player;
-            }
-            else if (result.includes("lose")){
-                ++computer;
-            }
-            else{
-            }
-            let score = `${player}:${computer}`;
-            console.log(score);
-           }
-        if (player > computer){
-            return `You win ${player}:${computer}`
+                return `${player}:${computer}`;
         }
-        else if (player < computer){
-            return `You lose ${player}:${computer}`
+        else if (result.includes("lose")){
+                ++computer;
+                return `${player}:${computer}`;
         }
         else{
-            return "gawd damn its a draw feller"
+            return `round draw ${player}:${computer}`;
+            }
+        if (player > computer && (player + computer) == 5){
+            return champion.textContent = `You win ${player}:${computer}`;
         }
-       }
-       console.log(game())
+        else if (player < computer && (player + computer) == 5){
+            return champion.textContent = `You lose ${player}:${computer}`;
+        }
+        
+        }
+       
+    /* scared of this */
+        PlayerRockBtnjs.addEventListener('click', () => {
+            scoringJs.textContent = game("rock");
+            if (player == 5){
+                body.removeChild(header)
+                body.removeChild(BtnsDiv)
+                body.appendChild(victoryvid)
+                body.appendChild(resultContainer)
+            return championJs.textContent = `You win ${player}:${computer}\r\nThank you for playing!`;
+        }
+        else if (computer == 5){
+                body.removeChild(header)
+                body.removeChild(BtnsDiv)
+                body.appendChild(defeatvid)
+                body.appendChild(resultContainer)
+            return championJs.textContent = `You lose ${player}:${computer}\r\nThank you for playing!`;
+        }
+        });
+
+        PlayerPaperBtnjs.addEventListener('click', () => {
+            scoringJs.textContent = game("paper");
+            if (player == 5){
+                body.removeChild(header)
+                body.removeChild(BtnsDiv)
+                body.appendChild(victoryvid)
+                body.appendChild(resultContainer)
+            return championJs.textContent = `You win ${player}:${computer}\r\nThank you for playing!`;
+        }
+        else if (computer == 5){
+                body.removeChild(header)
+                body.removeChild(BtnsDiv)
+                body.appendChild(defeatvid)
+                body.appendChild(resultContainer)
+            return championJs.textContent = `You lose ${player}:${computer}\r\nThank you for playing!`;
+        }
+        });
+
+        PlayerScissorsBtnjs.addEventListener('click', () => {
+            scoringJs.textContent = game("scissors");
+        if (player ==5){
+                body.removeChild(header)
+                body.removeChild(BtnsDiv)
+                body.appendChild(victoryvid)
+                body.appendChild(resultContainer)
+            return championJs.textContent = `You win ${player}:${computer}\r\nThank you for playing!` ;
+        }
+        else if (computer == 5){
+                body.removeChild(header)
+                body.removeChild(BtnsDiv)
+                body.appendChild(defeatvid)
+                body.appendChild(resultContainer)
+            return championJs.textContent = `You lose ${player}:${computer}\r\nThank you for playing!`;
+        }
+        })
+    })
+        }
+        });
+        
+
+        })
     </script>
 </body>
 </html>
