@@ -13,6 +13,7 @@ body {
     justify-content: center;
     color: #b3963c;
     font-size: 32px;
+    filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
 }
 .classicmalphite, .classicdarius, .classicquinn{
     transition: 1s ease;
